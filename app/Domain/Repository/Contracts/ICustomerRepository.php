@@ -1,6 +1,6 @@
 <?php
 
-namespace CleanPhp\Repository\Contracts;
+namespace CleanPhp\Domain\Repository\Contracts;
 
 interface ICustomerRepository extends IRepository
 {
