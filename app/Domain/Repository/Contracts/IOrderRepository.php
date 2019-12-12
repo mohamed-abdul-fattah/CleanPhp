@@ -5,7 +5,7 @@ namespace CleanPhp\Domain\Repository\Contracts;
 interface IOrderRepository extends IRepository
 {
   /**
-   * @return mixed
+   * @return array
    */
   public function getUnInvoicedOrders();
 }
