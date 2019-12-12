@@ -9,10 +9,15 @@
             "email": "csmohamed8@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "peridot-php/leo": "^1.6"
+    },
     "autoload": {
         "psr-4": {
             "CleanPhp\\": "app/"
         }
+    },
+    "require-dev": {
+        "peridot-php/peridot": "^1.19"
     }
 }
