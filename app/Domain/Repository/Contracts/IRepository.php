@@ -8,7 +8,7 @@ interface IRepository
 {
   /**
    * @param int $id
-   * @return AbstractEntity
+   * @return bool|AbstractEntity
    */
   public function getById(int $id);
 
@@ -20,7 +20,7 @@ interface IRepository
   /**
    * @param AbstractEntity $entity
    */
-  public function persist($entity);
+  public function persist(AbstractEntity $entity);
 
   /**
    * Begin DB transaction

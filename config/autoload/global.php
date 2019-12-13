@@ -11,6 +11,62 @@
  * file.
  */
 
+use CleanPhp\Persistence\Zend\TableGateway\TableGatewayFactory;
+use CleanPhp\Persistence\Zend\DataTable\CustomerTable;
+use CleanPhp\Domain\Entity\Customer;
+use CleanPhp\Domain\Entity\Invoice;
+use CleanPhp\Domain\Entity\Order;
+use Zend\Hydrator\ClassMethods;
+
 return [
-    // ...
+    'service_manager' => [
+      'factories' => [
+        'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
+        'CustomerTable' => function ($sm) {
+          /** @var \Zend\ServiceManager\ServiceManager $sm */
+          $factory  = new TableGatewayFactory;
+          $hydrator = new ClassMethods;
+
+          return new CustomerTable(
+            $factory->createGateway(
+              $sm->get('Zend\Db\Adapter\Adapter'),
+              $hydrator,
+              new Customer,
+              'customers'
+            ),
+            $hydrator
+          );
+        },
+        'InvoiceTable' => function ($sm) {
+          /** @var \Zend\ServiceManager\ServiceManager $sm */
+          $factory  = new TableGatewayFactory;
+          $hydrator = new ClassMethods;
+
+          return new CustomerTable(
+            $factory->createGateway(
+              $sm->get('Zend\Db\Adapter\Adapter'),
+              $hydrator,
+              new Invoice,
+              'invoices'
+            ),
+            $hydrator
+          );
+        },
+        'OrderTable' => function ($sm) {
+          /** @var \Zend\ServiceManager\ServiceManager $sm */
+          $factory  = new TableGatewayFactory;
+          $hydrator = new ClassMethods;
+
+          return new CustomerTable(
+            $factory->createGateway(
+              $sm->get('Zend\Db\Adapter\Adapter'),
+              $hydrator,
+              new Order,
+              'orders'
+            ),
+            $hydrator
+          );
+        },
+      ],
+    ],
 ];

@@ -2,7 +2,7 @@
 
 namespace CleanPhp\Domain\Entity;
 
-class AbstractEntity
+abstract class AbstractEntity
 {
   /**
    * Entity identifier
