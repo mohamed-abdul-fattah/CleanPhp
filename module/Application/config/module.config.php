@@ -7,9 +7,11 @@
 
 namespace Application;
 
+use Zend\ServiceManager\Factory\InvokableFactory;
+use Application\Controller\CustomersController;
+use Zend\ServiceManager\ServiceManager;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
@@ -24,57 +26,27 @@ return [
                     ],
                 ],
             ],
-            'application' => [
+            'customers' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/application[/:action]',
+                    'route'    => '/customers',
                     'defaults' => [
-                        'controller' => Controller\IndexController::class,
+                        'controller' => Controller\CustomersController::class,
                         'action'     => 'index',
                     ],
                 ],
             ],
-//          [
-//            'customers'   => [
-//                'type'    => Segment::class,
-//                'options' => [
-//                  'route'     => '/customers',
-//                  'defaults'  => [
-//                    'controller'  => Controller\CustomersController::class,
-//                    'action'      => 'index',
-//                  ],
-//                ],
-//            ],
-//          ],
-//          [
-//            'orders'      => [
-//              'type'      => Segment::class,
-//              'options'   => [
-//                'route'       => '/orders',
-//                'defaults'    => [
-//                  'controller'  => Controller\OrdersController::class,
-//                  'action'      => 'index',
-//                ],
-//              ],
-//            ],
-//          ],
-//          [
-//            'invoices'    => [
-//              'type'      => Segment::class,
-//              'options'   => [
-//                'route'   => '/invoices',
-//                'defaults'    => [
-//                  'controller'  => Controller\InvoicesController::class,
-//                  'action'      => 'index',
-//                ],
-//              ],
-//            ],
-//          ],
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
+            Controller\CustomersController::class => function($sm) {
+              /** @var ServiceManager $sm */
+              return new CustomersController(
+                $sm->get('CustomerTable')
+              );
+            }
         ],
     ],
     'view_manager' => [
