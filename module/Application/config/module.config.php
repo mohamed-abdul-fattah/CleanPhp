@@ -34,6 +34,42 @@ return [
                     ],
                 ],
             ],
+//          [
+//            'customers'   => [
+//                'type'    => Segment::class,
+//                'options' => [
+//                  'route'     => '/customers',
+//                  'defaults'  => [
+//                    'controller'  => Controller\CustomersController::class,
+//                    'action'      => 'index',
+//                  ],
+//                ],
+//            ],
+//          ],
+//          [
+//            'orders'      => [
+//              'type'      => Segment::class,
+//              'options'   => [
+//                'route'       => '/orders',
+//                'defaults'    => [
+//                  'controller'  => Controller\OrdersController::class,
+//                  'action'      => 'index',
+//                ],
+//              ],
+//            ],
+//          ],
+//          [
+//            'invoices'    => [
+//              'type'      => Segment::class,
+//              'options'   => [
+//                'route'   => '/invoices',
+//                'defaults'    => [
+//                  'controller'  => Controller\InvoicesController::class,
+//                  'action'      => 'index',
+//                ],
+//              ],
+//            ],
+//          ],
         ],
     ],
     'controllers' => [
