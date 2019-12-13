@@ -32,7 +32,8 @@
     </div>
 </nav>
 <div class="container">
-  <?= $this->content; ?>
+    <?= $this->partial('application/partials/flash-messages') ?>
+    <?= $this->content; ?>
     <hr>
     <footer>
         <p>I'm the footer.</p>

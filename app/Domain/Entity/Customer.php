@@ -17,7 +17,7 @@ class Customer extends AbstractEntity
   /**
    * @return string
    */
-  public function getName(): string
+  public function getName()
   {
     return $this->name;
   }
@@ -35,7 +35,7 @@ class Customer extends AbstractEntity
   /**
    * @return string
    */
-  public function getEmail(): string
+  public function getEmail()
   {
     return $this->email;
   }

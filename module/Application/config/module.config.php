@@ -8,8 +8,10 @@
 namespace Application;
 
 use Zend\ServiceManager\Factory\InvokableFactory;
+use CleanPhp\Domain\Service\CustomerInputFilter;
 use Application\Controller\CustomersController;
 use Zend\ServiceManager\ServiceManager;
+use Zend\Hydrator\ClassMethods;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 
@@ -27,12 +29,24 @@ return [
                 ],
             ],
             'customers' => [
+                'may_terminate' => true,
                 'type'    => Segment::class,
                 'options' => [
                     'route'    => '/customers',
                     'defaults' => [
                         'controller' => Controller\CustomersController::class,
                         'action'     => 'index',
+                    ],
+                ],
+                'child_routes' => [
+                    'create' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => '/new',
+                            'defaults' => [
+                                'action' => 'new',
+                            ],
+                        ],
                     ],
                 ],
             ],
@@ -44,7 +58,9 @@ return [
             Controller\CustomersController::class => function($sm) {
               /** @var ServiceManager $sm */
               return new CustomersController(
-                $sm->get('CustomerTable')
+                  $sm->get('CustomerTable'),
+                  new CustomerInputFilter(),
+                  new ClassMethods()
               );
             }
         ],
@@ -65,4 +81,9 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+    'view_helpers' => [
+        'invokables'   => [
+            'validationErrors' => View\Helper\ValidationErrors::class,
+        ]
+    ]
 ];
