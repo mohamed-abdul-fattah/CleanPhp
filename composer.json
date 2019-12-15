@@ -11,7 +11,10 @@
     ],
     "require": {
         "peridot-php/leo": "^1.6",
-        "zendframework/zendframework": "^3.0"
+        "zendframework/zendframework": "^3.0",
+        "doctrine/orm": "^2.7",
+        "symfony/yaml": "2.*",
+        "doctrine/doctrine-orm-module": "^2.1"
     },
     "autoload": {
         "psr-4": {

@@ -14,5 +14,7 @@ return [
     'Zend\Router',
     'Zend\Validator',
     'Application',
-    'Zend\Mvc\Plugin\FlashMessenger'
+    'Zend\Mvc\Plugin\FlashMessenger',
+    'DoctrineModule',
+    'DoctrineORMModule',
 ];

@@ -58,7 +58,7 @@ return [
             Controller\CustomersController::class => function($sm) {
               /** @var ServiceManager $sm */
               return new CustomersController(
-                  $sm->get('CustomerTable'),
+                  $sm->get('CustomerRepository'),
                   new CustomerInputFilter(),
                   new ClassMethods()
               );
